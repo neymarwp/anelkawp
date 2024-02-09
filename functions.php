@@ -213,6 +213,6 @@ new Updater(
 		'repo' => 'neymarwp/anelkawp',             // Theme repository.
 		'slug' => 'anelkawp',                     // Theme Slug.
 		'url'  => 'https://messiwp.com/gridd', // Theme URL.
-		'ver'  => 1.4,                       // Theme Version.
+		'ver'  => 1.5,                       // Theme Version.
 	]
 );
