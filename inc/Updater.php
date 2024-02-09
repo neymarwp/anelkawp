@@ -184,19 +184,26 @@ class Updater {
 	 * @param object $transient The pre-saved value of the `update_themes` site transient.
 	 * @return object
 	 */
+	
 	public function update_themes( $transient ) {
-		if ( isset( $transient->checked ) ) {
-			$current_version = $this->ver;
+        if ( empty( $transient->checked ) ) {
+            return $transient;
+        }
 
-			if ( version_compare( $current_version, $this->get_latest_version(), '<' ) ) {
-				$transient->response[ $this->name ] = [
-					'theme'       => $this->name,
-					'new_version' => $this->get_latest_version(),
-					'url'         => 'https://github.com/' . $this->repo . '/releases',
-					'package'     => $this->get_latest_package(),
-				];
-			}
-		}
-		return $transient;
-	}
+        // Get the current version of the theme from the style.css file
+        $theme_data = wp_get_theme( $this->slug );
+        $current_version = $theme_data->get( 'Version' );
+
+        $latest_version = $this->get_latest_version();
+        if ( version_compare( $current_version, $latest_version, '<' ) ) {
+            $transient->response[ $this->slug ] = [
+                'theme'       => $this->slug,
+                'new_version' => $latest_version,
+                'url'         => 'https://github.com/' . $this->repo . '/releases',
+                'package'     => $this->get_latest_package(),
+            ];
+        }
+
+        return $transient;
+    }
 }
