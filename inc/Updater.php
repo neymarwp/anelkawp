@@ -118,7 +118,7 @@ class Updater {
 		$response = wp_remote_get( $this->get_releases_url() );
 		if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
 			$response = json_decode( wp_remote_retrieve_body( $response ), true );
-			set_site_transient( md5( $this->get_releases_url() ), $response, 5 * MINUTE_IN_SECONDS );
+			set_site_transient( md5( $this->get_releases_url() ), $response, 12 * HOUR_IN_SECONDS );
 		}
 	}
 
