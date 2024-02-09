@@ -204,16 +204,3 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'twentytwentyfour_pattern_categories' );
-
-
-include 'inc/Updater.php';
-
-new Updater(
-	[
-		'name' => 'anelkawp',                     // Theme Name.
-		'repo' => 'neymarwp/anelkawp',             // Theme repository.
-		'slug' => 'anelkawp',                     // Theme Slug.
-		'url'  => 'https://messiwp.com/gridd', // Theme URL.
-		'ver'  => 1.0,                       // Theme Version.
-	]
-);
